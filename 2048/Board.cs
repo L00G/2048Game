@@ -208,8 +208,13 @@ namespace _2048
                     if (m_board[i, j] == m_board[i, j + 1] || m_board[i, j] == m_board[i + 1, j])
                         hasAnswer = true;
 
-            if (m_board[2, 3] == m_board[3, 3] || m_board[3, 2] == m_board[3, 3])
-                hasAnswer = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (m_board[3, i] == m_board[3, i + 1])
+                    hasAnswer = true;
+                if (m_board[i, 3] == m_board[i + 1, 3])
+                    hasAnswer = true;
+            }
 
             if (!hasAnswer)
                 return true;

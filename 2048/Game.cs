@@ -1,4 +1,6 @@
 ﻿
+using System.Windows;
+
 namespace _2048
 {
     class Game
@@ -10,7 +12,7 @@ namespace _2048
         private int m_score;
         private int m_bestSocre;
         private bool m_play;
-
+        private bool m_clear;
         public Game( )
         {
             m_bestSocre = 0;
@@ -20,9 +22,19 @@ namespace _2048
             Initialize();
         }
 
+        public bool IsPlay()
+        {
+            return m_play;
+        }
+        public bool IsClear()
+        {
+            return m_clear;
+        }
+
         public void Initialize()
         {
             m_play = true;
+            m_clear = false;
             m_score = 0;
             m_board.Initialize();
             m_boardBorder.Initialize();
@@ -40,14 +52,13 @@ namespace _2048
                 else
                 {
                     if (score == 2048)
+                    {
                         m_play = false;
+                        m_clear = true;
+                    }
                     m_score += score;
                 }
                 if (m_bestSocre < m_score) m_bestSocre = m_score;
-            }
-            else
-            {
-                Initialize();
             }
         }
 

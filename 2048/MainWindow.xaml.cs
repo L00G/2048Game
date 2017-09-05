@@ -51,7 +51,15 @@ namespace _2048
                 oGame.Update(Button.Left);
             if (e.Key == Key.Right)
                 oGame.Update(Button.Right);
+            if (e.Key == Key.Enter)
+                if (!oGame.IsPlay())
+                    oGame.Initialize();
             oGame.Render();
+            if (!oGame.IsPlay())
+            {
+                if(oGame.IsClear()) MessageBox.Show(" Clear Game!! \n You Want more Game? \n Please Enter");
+                else MessageBox.Show(" Lose!! \n You Want more Game? \n Please Enter");
+            }
         }
     }
 }
